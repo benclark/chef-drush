@@ -17,7 +17,12 @@
 # limitations under the License.
 #
 
-include_recipe "php"
+if node['drush']['install_method'].include?('noop')
+  log "Drush pear installer NOOP" do
+  end
+else
+  include_recipe "php"
 
-include_recipe "drush::install_console_table"
-include_recipe "drush::pear"
+  include_recipe "drush::install_console_table"
+  include_recipe "drush::pear"
+end
