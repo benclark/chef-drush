@@ -31,8 +31,8 @@ action :install do
 
       # Ensure the build_path directory is present.
       directory @new_resource.build_path do
-        owner "root"
-        group "root"
+        owner new_resource.shell_user
+        group new_resource.shell_group
         mode "0755"
         recursive true
         action :create
